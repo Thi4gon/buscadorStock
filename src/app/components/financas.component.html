@@ -1,0 +1,46 @@
+
+<div class="container">
+
+  <h1 class="title"> Busca ativo</h1>
+
+
+  <div class="containerInp">
+    <input type="text"
+     placeholder="ex: petr4.sa"
+     #inputValue
+     id="inputTxt"
+     (keydown.enter)="getStockInfo(inputValue.value)"
+     required
+     />
+
+     <button class="buttonSearch" (click)="getStockInfo(inputValue.value)">
+      <!-- <FiSearch size={25} color="#FFF"></FiSearch> -->
+      <mat-icon class="iconColor">search</mat-icon>
+    </button>
+  </div>
+
+
+
+
+  <span *ngIf="erroSemTexto">
+    <p class="errorTxtStexto">Nome de ativo é obrigatório</p>
+  </span>
+  <span *ngIf="erro==true && ligarCors == false">
+    <p class="errorTxt">Simbolo não encontrado, tente procurar por petra4.sa ou USD para testar</p>
+  </span>
+  <span *ngIf="ligarCors == true">
+    <p class="errorTxt">Ative o Cors, é só baixar a extenção moesif Cors no chrome, instalar no seu navegador e ativar </p>
+  </span>
+
+
+  <div class="chart" *ngIf="erro==false && ligarCors == false;">
+    <canvas baseChart
+      [datasets]="lineChartData"
+      [labels]="lineChartLabels"
+      [options]="lineChartOptions"
+      [legend]="lineChartLegend"
+      [type]="'line'">
+    </canvas>
+  </div>
+
+</div>

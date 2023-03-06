@@ -1,0 +1,10 @@
+
+{
+  "/v8/*": {
+  "target": "https://query2.finance.yahoo.com",
+  "secure": false,
+  "changeOrigin": true
+
+
+  }
+}
