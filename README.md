@@ -32,6 +32,10 @@ Tomei a liberdade de subir em um servidor da AWS na amazon, para funcionar no am
 
 ![image](https://user-images.githubusercontent.com/12023179/223026768-6a92c1bf-8cde-44c9-92d9-d017f3fed9ff.png)
 
+## Informação adicional
+
+Está API está retornando um array com os horarios (timestamps), como falado na explicação da task, (chart.result.timestamp) porém só vem os dados de um mesmo dia, minuto a minuto. 
+Com isso eu cruzei esses dados com o valor de abertura (chart.result.indicators.quote.open) 
 
 
 #----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -68,5 +72,8 @@ I have uploaded the project in AWS amplify, so to run it, you will need to downl
 
 ![image](https://user-images.githubusercontent.com/12023179/223026768-6a92c1bf-8cde-44c9-92d9-d017f3fed9ff.png)
 
+## aditional info
 
+This API is returning an array with all timeStamps, as mentioned in the explanation of the task on (chart.result.timestamp) but it only comes with data from the same day, minute by minute.
+With that, I crossed this data with the opening value (chart.result.indicators.quote.open)
 
