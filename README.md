@@ -12,6 +12,10 @@ Execute `npm run start` para um servidor de desenvolvimento. Navegue até `http:
 
 Ou execute `ng serve --proxy-config proxy.conf.json`, você precisa fazer isso por causa da configuração do proxy para habilitar CORS em angular.
 
+![image](https://user-images.githubusercontent.com/12023179/223028027-a88b04c7-d1c6-4246-b3a6-3bf2e8db733d.png)
+
+
+
 ## Construir
 
 Execute `ng build` para compilar o projeto. Os artefatos de compilação serão armazenados no diretório `dist/`.
@@ -45,6 +49,8 @@ Run `npm install` to install node_modules dependencies and package-lock.json.
 Run `npm run start` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
 Or run `ng serve --proxy-config proxy.conf.json` you need to do this becouse of the proxy config to enable CORS in angular.
+
+![image](https://user-images.githubusercontent.com/12023179/223028027-a88b04c7-d1c6-4246-b3a6-3bf2e8db733d.png)
 
 ## Build
 
