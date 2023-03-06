@@ -62,7 +62,7 @@ erroSemTexto = false;
       else {
       const reducedTimeFrames = this.timeFramesBCKUP.slice(0,30);
       this.openMarketValuesBCKUP.forEach((element:any) => {
-        element = element.toFixed(10)
+        element = element?.toFixed(5)
       });
       const reducedOpenMarketValues = this.openMarketValuesBCKUP.slice(0,30);
       this.erro= false;
