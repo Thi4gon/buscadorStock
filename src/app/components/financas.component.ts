@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 import { ChartOptions} from 'chart.js';
+import { take } from 'rxjs';
 
 
 import { FinancaService } from '../services/financa.service';
@@ -34,6 +35,7 @@ public lineChartOptions: ChartOptions = {
 public lineChartLegend = true;
 ligarCors= false;
 erroSemTexto = false;
+searching = false;
 
   constructor(public financaService: FinancaService){
     this.erro=undefined
@@ -42,7 +44,9 @@ erroSemTexto = false;
   getStockInfo(value:string){
     const valueApi = value.toUpperCase();
     this.clearVariables();
-
+    if(this.searching){
+      return
+    }
     const haveData = this.checkIfHaveValue(valueApi)
     if(haveData){
       this.makeApiCall(valueApi);
@@ -51,13 +55,15 @@ erroSemTexto = false;
   }
 
   makeApiCall(valueApi:string){
-    this.financaService.buscarStock(valueApi).subscribe(response=>{
+    this.searching = true;
+    this.financaService.buscarStock(valueApi).pipe(take(1)).subscribe(response=>{
       this.timeFramesBCKUP = response.timestamp;
 
        this.openMarketValuesBCKUP = response.indicators.quote[0].open;
 
       if(this.timeFramesBCKUP === undefined || this.openMarketValuesBCKUP === undefined) {
-         this.callError()
+        this.searching = false;
+         this.callError();
         }
       else {
       const reducedTimeFrames = this.timeFramesBCKUP.slice(0,30);
@@ -70,9 +76,10 @@ erroSemTexto = false;
       this.lineChartData.push({data:reducedOpenMarketValues,label:valueApi})
       const dates = this.convertTimeframeToPtBr(reducedTimeFrames);
       this.lineChartLabels = dates
-
+      this.searching = false;
       }
     },err=>{
+      this.searching = false;
       if(err.status == 0){
         this.callLigarCors();
         return
